@@ -9,6 +9,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev')
+app.config['SQLALCHEMY_DATABASE_URI'] = prefix + os.path.join(os.path.dirname(app.root_path), os.getenv('DATABASE_FILE', 'data.db'))
 # 注意更新这里的路径，把 app.root_path 添加到 os.path.dirname() 中
 # 以便把文件定位到项目根目录
 WIN = sys.platform.startswith('win')
